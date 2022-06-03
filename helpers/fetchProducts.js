@@ -1,4 +1,5 @@
 const fetchProducts = () => {
+  // fetch('computador');
   // seu código aqui
 };
 
