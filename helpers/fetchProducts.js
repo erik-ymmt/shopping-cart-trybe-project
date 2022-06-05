@@ -4,7 +4,6 @@ const fetchProducts = async (urlKey) => {
   if (urlKey === undefined) return new Error('You must provide an url');
   const response = await fetch(creatUrl(urlKey));
   const data = await response.json();
-  console.log(data.results.length);
   return data;
 };
 
