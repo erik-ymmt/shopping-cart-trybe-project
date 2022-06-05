@@ -34,7 +34,9 @@ const insertAvailableProducts = async () => {
 const getIDFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
 
 const cartItemClickListener = (event) => {
-  // coloque seu código aqui
+  console.log('hi');
+  const cart = document.querySelector('.cart__items');
+  cart.removeChild(event.target);
 };
 
 const createCartItemElement = ({ id, title, price }) => {
