@@ -64,6 +64,5 @@ const addProductOnCart = async () => {
 };
 
 window.onload = () => { 
-  insertAvailableProducts();
   addProductOnCart();
 };
