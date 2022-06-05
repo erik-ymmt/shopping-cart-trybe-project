@@ -1,4 +1,4 @@
-const saveCartItems = () => {
+const saveCartItems = async () => {
   // seu código aqui
 };
 
