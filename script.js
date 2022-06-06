@@ -65,7 +65,9 @@ const calculateTotalPrice = () => {
     const currentPrice = currentProduct.innerText.split('$')[1];
     return total + parseFloat(currentPrice);
   }, 0);
-  totalPriceTag.innerHTML = Math.round(totalPrice * 100) / 100;
+  const roundedTotalPrice = Math.round(totalPrice * 100) / 100;
+  totalPriceTag.innerHTML = roundedTotalPrice;
+  return roundedTotalPrice;
 };
 
 const controlCartStyle = () => {
@@ -133,6 +135,12 @@ const emptyCart = () => {
   });
 };
 
+const finishShop = () => {
+  const finishBtn = document.getElementById('buy-btn');
+  finishBtn.addEventListener('click', () => 
+    alert(`Compra efetuada com sucesso! Valor R$${calculateTotalPrice()}`));
+};
+
 window.onload = () => { 
   loadingApiText();
   addProductOnCart();
@@ -140,4 +148,5 @@ window.onload = () => {
   cartItemClickListener();
   emptyCart();
   updateInfos();
+  finishShop();
 };
