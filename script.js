@@ -97,9 +97,20 @@ const addProductOnCart = async () => {
   });
 };
 
+const emptyCart = () => {
+  const cartItems = document.querySelector('.cart__items');
+  const emptyCartBtn = document.querySelector('.empty-cart');
+  emptyCartBtn.addEventListener('click', () => {
+    cartItems.innerHTML = '';
+    localStorage.setItem('cartItems', '');
+    calculateTotalPrice();
+  });
+};
+
 window.onload = () => { 
   addProductOnCart();
   getSavedCartItems();
   cartItemClickListener();
   calculateTotalPrice();
+  emptyCart();
 };
