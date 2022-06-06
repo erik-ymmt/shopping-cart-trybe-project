@@ -21,6 +21,12 @@ const createProductImageElement = (imageSource) => {
   return img;
 };
 
+const createProductImageContainer = () => {
+  const imgContainer = document.createElement('div');
+  imgContainer.className = 'item__image-container';
+  return imgContainer;
+};
+
 const createCustomElement = (element, className, innerText) => {
   const e = document.createElement(element);
   e.className = className;
@@ -34,7 +40,8 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
 
   section.appendChild(createCustomElement('span', 'item__sku', id));
   section.appendChild(createCustomElement('span', 'item__title', title));
-  section.appendChild(createProductImageElement(thumbnail));
+  section.appendChild(createProductImageContainer())
+    .appendChild(createProductImageElement(thumbnail));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
 
   return section;
@@ -49,17 +56,6 @@ const insertAvailableProducts = async () => {
 };
 
 const getIDFromProductItem = (item) => item.querySelector('span.item__sku').innerText;
-
-// Opção 1 - quando for mudado o estilo do carrinho
-// const calculateTotalPrice = () => {
-//   const totalPriceTag = document.querySelector('.total-price');
-//   const allPrices = document.querySelectorAll('.product-price');
-//   allPricesArray = Array.from(allPrices);
-//   const totalPrice = allPricesArray.reduce((total, item) =>
-//     total + parseInt(item.innerHTML, 10), 0);
-//   console.log(totalPrice);
-//   totalPriceTag.innerText = totalPrice;
-// };
 
 const calculateTotalPrice = () => {
   const totalPriceTag = document.querySelector('.total-price');
@@ -89,10 +85,9 @@ const cartItemClickListener = () => {
 const createCartItemElement = ({ id, title, price }) => {
   const li = document.createElement('li');
   li.className = 'cart__item';
-  li.innerText = `SKU: ${id} | NAME: ${title} | PRICE: $${price}`;
-  // li.innerHTML = `ID: ${id}
-  // <br>NOME: ${title}
-  // <br>PREÇO: $<span class="product-price">${price}</span>`;
+  li.innerHTML = `<hr><b>ID:</b> ${id}
+  <br><b>Item:</b> ${title}
+  <br><b>Preço:</b> R$${price}`;
   li.addEventListener('click', cartItemClickListenerDelete);
   return li;
 };
