@@ -116,6 +116,10 @@ body {
   text-align: center;
 }
 
+.item .item__price {
+  font-weight: 600;
+}
+
 .item__image-container {
   height: 150px;
   width: 150px;

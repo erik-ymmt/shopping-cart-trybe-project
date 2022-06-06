@@ -34,7 +34,7 @@ const createCustomElement = (element, className, innerText) => {
   return e;
 };
 
-const createProductItemElement = ({ id, title, thumbnail }) => {
+const createProductItemElement = ({ id, title, thumbnail, price }) => {
   const section = document.createElement('section');
   section.className = 'item';
 
@@ -42,6 +42,7 @@ const createProductItemElement = ({ id, title, thumbnail }) => {
   section.appendChild(createProductImageContainer())
     .appendChild(createProductImageElement(thumbnail));
   section.appendChild(createCustomElement('span', 'item__title', title));
+  section.appendChild(createCustomElement('span', 'item__price', `R$ ${price}`));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
 
   return section;
