@@ -34,6 +34,18 @@ const createCustomElement = (element, className, innerText) => {
   return e;
 };
 
+const formatPrices = (originalPrice) => {
+  let stringfiedPrice = String(originalPrice);
+  const testFormat = stringfiedPrice.includes('.');
+  if (!testFormat) return `${originalPrice},00`;
+  const splittedPrice = stringfiedPrice.split('.');
+  if (splittedPrice[1].length < 2) {
+    stringfiedPrice += '0';
+    return stringfiedPrice.replace('.', ',');
+  }
+  return stringfiedPrice.replace('.', ',');
+};
+
 const createProductItemElement = ({ id, title, thumbnail, price }) => {
   const section = document.createElement('section');
   section.className = 'item';
@@ -42,7 +54,7 @@ const createProductItemElement = ({ id, title, thumbnail, price }) => {
   section.appendChild(createProductImageContainer())
     .appendChild(createProductImageElement(thumbnail));
   section.appendChild(createCustomElement('span', 'item__title', title));
-  section.appendChild(createCustomElement('span', 'item__price', `R$ ${price}`));
+  section.appendChild(createCustomElement('span', 'item__price', `R$ ${formatPrices(price)}`));
   section.appendChild(createCustomElement('button', 'item__add', 'Adicionar ao carrinho!'));
 
   return section;
@@ -63,12 +75,12 @@ const calculateTotalPrice = () => {
   const cart = document.querySelectorAll('.cart__item');
   const cartArray = Array.from(cart);
   const totalPrice = cartArray.reduce((total, currentProduct) => {
-    const currentPrice = currentProduct.innerText.split('$')[1];
+    const currentPrice = currentProduct.innerText.split('$')[1].replace(',', '.');
     return total + parseFloat(currentPrice);
   }, 0);
   const roundedTotalPrice = Math.round(totalPrice * 100) / 100;
-  totalPriceTag.innerHTML = roundedTotalPrice;
-  return roundedTotalPrice;
+  totalPriceTag.innerHTML = formatPrices(roundedTotalPrice);
+  return formatPrices(roundedTotalPrice);
 };
 
 const controlCartStyle = () => {
@@ -104,7 +116,7 @@ const createCartItemElement = ({ id, title, price, thumbnail }) => {
   <img class="cart-thumbnails" src="${thumbnail}">
   <span class="item__sku">ID: ${id}</span>
   ${shortTitle}
-  <br><b>Preço:</b> R$${price}
+  <br><b>Preço:</b> R$${formatPrices(price)}
   <button class="delete-from-cart">x</button>`;
   return li;
 };
