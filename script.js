@@ -148,7 +148,7 @@ const emptyCart = () => {
   });
 };
 
-const finishShop = () => {
+const finishShopSimulation = () => {
   const finishBtn = document.getElementById('buy-btn');
   finishBtn.addEventListener('click', () => {
     const totalPrice = calculateTotalPrice();
@@ -167,5 +167,5 @@ window.onload = () => {
   cartItemClickListener();
   emptyCart();
   updateInfos();
-  finishShop();
+  finishShopSimulation();
 };
