@@ -150,8 +150,14 @@ const emptyCart = () => {
 
 const finishShop = () => {
   const finishBtn = document.getElementById('buy-btn');
-  finishBtn.addEventListener('click', () => 
-    alert(`Compra efetuada com sucesso! Valor R$${calculateTotalPrice()}`));
+  finishBtn.addEventListener('click', () => {
+    const totalPrice = calculateTotalPrice();
+    if (totalPrice[0] === '0') {
+      alert('Adicione itens ao carrinho');
+    } else {
+      alert(`Compra efetuada com sucesso! Valor R$${totalPrice}`);
+    }
+  });
 };
 
 window.onload = () => { 
