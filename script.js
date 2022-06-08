@@ -1,10 +1,15 @@
 const classCartItems = '.cart__items';
 
+const createCustomElement = (element, className, innerText) => {
+  const e = document.createElement(element);
+  e.className = className;
+  e.innerText = innerText;
+  return e;
+};
+
 const loadingApiText = () => {
   const shoppingSection = document.querySelector('.items');
-  const loadingElement = document.createElement('p');
-  loadingElement.className = 'loading';
-  loadingElement.innerText = 'carregando...';
+  const loadingElement = createCustomElement('p', 'loading', 'carregando...');
   shoppingSection.appendChild(loadingElement);
 };
 
@@ -27,13 +32,6 @@ const createProductImageContainer = () => {
   return imgContainer;
 };
 
-const createCustomElement = (element, className, innerText) => {
-  const e = document.createElement(element);
-  e.className = className;
-  e.innerText = innerText;
-  return e;
-};
-
 const formatPrices = (originalPrice) => {
   let stringfiedPrice = String(originalPrice);
   const testFormat = stringfiedPrice.includes('.');
@@ -44,6 +42,7 @@ const formatPrices = (originalPrice) => {
     return stringfiedPrice.replace('.', ',');
   }
   return stringfiedPrice.replace('.', ',');
+  // return Intl.NumberFormat('pt-br').format(originalPrice);
 };
 
 const createProductItemElement = ({ id, title, thumbnail, price }) => {
