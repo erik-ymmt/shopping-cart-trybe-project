@@ -32,18 +32,21 @@ const createProductImageContainer = () => {
   return imgContainer;
 };
 
-const formatPrices = (originalPrice) => {
-  let stringfiedPrice = String(originalPrice);
-  const testFormat = stringfiedPrice.includes('.');
-  if (!testFormat) return `${originalPrice},00`;
-  const splittedPrice = stringfiedPrice.split('.');
-  if (splittedPrice[1].length < 2) {
-    stringfiedPrice += '0';
-    return stringfiedPrice.replace('.', ',');
-  }
-  return stringfiedPrice.replace('.', ',');
-  // return Intl.NumberFormat('pt-br').format(originalPrice);
-};
+// const formatPrices = (originalPrice) => {
+  // versão 1 substituída:
+  // let stringfiedPrice = String(originalPrice);
+  // const testFormat = stringfiedPrice.includes('.');
+  // if (!testFormat) return `${originalPrice},00`;
+  // const splittedPrice = stringfiedPrice.split('.');
+  // if (splittedPrice[1].length < 2) {
+  //   stringfiedPrice += '0';
+  //   return stringfiedPrice.replace('.', ',');
+  // }
+  // return stringfiedPrice.replace('.', ',');
+// };
+
+const formatPrices = (originalPrice) =>
+  Intl.NumberFormat('pt-br', { minimumFractionDigits: 2 }).format(originalPrice);
 
 const createProductItemElement = ({ id, title, thumbnail, price }) => {
   const section = document.createElement('section');
@@ -73,9 +76,9 @@ const calculateTotalPrice = () => {
   const totalPriceTag = document.querySelector('.total-price');
   const cart = document.querySelectorAll('.cart__item');
   const cartArray = Array.from(cart);
-  const totalPrice = cartArray.reduce((total, currentProduct) => {
-    const currentPrice = currentProduct.innerText.split('$')[1].replace(',', '.');
-    return total + parseFloat(currentPrice);
+  const totalPrice = cartArray.reduce((total, currentItem) => {
+    currentPrice = parseFloat(currentItem.lastChild.innerText);
+    return total + currentPrice;
   }, 0);
   const roundedTotalPrice = Math.round(totalPrice * 100) / 100;
   totalPriceTag.innerHTML = formatPrices(roundedTotalPrice);
@@ -107,6 +110,13 @@ const updateInfos = () => {
   controlCartStyle();
 };
 
+const loadCartLocalStorage = () => {
+  savedCart = getSavedCartItems();
+  if (savedCart !== undefined) {
+    document.querySelector('.cart__items').innerHTML = savedCart;
+  }
+};
+
 const createCartItemElement = ({ id, title, price, thumbnail }) => {
   const li = document.createElement('li');
   const shortTitle = `${title.split(' ')[0]} ${title.split(' ')[1]}`;
@@ -116,7 +126,8 @@ const createCartItemElement = ({ id, title, price, thumbnail }) => {
   <span class="item__sku">ID: ${id}</span>
   ${shortTitle}
   <br><b>Preço:</b> R$${formatPrices(price)}
-  <button class="delete-from-cart">x</button>`;
+  <button class="delete-from-cart">x</button>
+  <span class="item__unformated_price">${price}</span>`;
   return li;
 };
 
@@ -162,7 +173,7 @@ const finishShopSimulation = () => {
 window.onload = () => { 
   loadingApiText();
   addProductOnCart();
-  getSavedCartItems();
+  loadCartLocalStorage();
   cartItemClickListener();
   emptyCart();
   updateInfos();

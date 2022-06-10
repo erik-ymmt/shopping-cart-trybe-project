@@ -104,7 +104,7 @@ body {
   background-color: white;
 }
 
-.item__sku {
+.item__sku , .item__unformated_price {
   display: none;
 }
 
