@@ -1,3 +1,8 @@
+## Shopping Cart Project
+![shopping-cart-gif](shopping-cart-trybe.gif)
+
+[Deploy link](https://shoppingcart-erik.netlify.app/)
+
 ## About
 &nbsp;&nbsp; This project is an exercise where I develop a simple shopping cart. The idea is to fetch data from [Mercado Libre](https://mercadolibre.com/)'s API to show results from a search for the key word "computer".
 
@@ -33,3 +38,4 @@ All technologies applied by me on this project:
 
 ## How to run the project:
 - Open the index.html file;
+- Or access [https://shoppingcart-erik.netlify.app/](https://shoppingcart-erik.netlify.app/)
