@@ -1,11 +1,11 @@
 ## About
 &nbsp;&nbsp; This project is an exercise where I develop a simple shopping cart. The idea is to fetch data from [Mercado Libre](https://mercadolibre.com/)'s API to show results from a search for the key word "computer".
 
-&nbsp;&nbsp; The code base was created by Trybe's team. My goal was to develop the page's functionalities and the functions' unit tests based on Requirements given by Trybe.
+&nbsp;&nbsp; The code base was created by [Trybe](https://www.betrybe.com/)'s team. My goal was to develop the page's functionalities and the functions' unit tests based on Requirements given by Trybe.
 	
 ## Requirements Overview:
 - [x] Develop the project base on the TDD process;
-- [x] Render a list of products using the endpoint `https://api.mercadolibre.com/sites/MLB/search?q=$QUERY`
+- [x] Render a list of products using the endpoint: [https://api.mercadolibre.com/sites/MLB/search?q=$QUERY](https://api.mercadolibre.com/sites/MLB/search?q=$QUERY)
 - [x] Add a function to add items to the cart;
 - [x] Add a function to remove items individually from the cart;
 - [x] Add a function to clear the cart;
@@ -24,13 +24,12 @@
 All the other files where developed by Trybe with minor adjustments.
 
 
-## Technologies applied by me on this project:
+## Technologies:
+All technologies applied by me on this project:
 - Vanilla Javascript;
 - CSS;
 - HTML;
 - Jest;
 
 ## How to run the project:
-- Git clone the code;
-- Navigate into the project's folder and install the dependencies with `npm install`;
-- Done! You can now run it with `npm start`;
+- Open the index.html file;
