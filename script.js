@@ -32,18 +32,6 @@ const createProductImageContainer = () => {
   return imgContainer;
 };
 
-// const formatPrices = (originalPrice) => {
-  // versão 1 substituída:
-  // let stringfiedPrice = String(originalPrice);
-  // const testFormat = stringfiedPrice.includes('.');
-  // if (!testFormat) return `${originalPrice},00`;
-  // const splittedPrice = stringfiedPrice.split('.');
-  // if (splittedPrice[1].length < 2) {
-  //   stringfiedPrice += '0';
-  //   return stringfiedPrice.replace('.', ',');
-  // }
-  // return stringfiedPrice.replace('.', ',');
-// };
 
 const formatPrices = (originalPrice) =>
   Intl.NumberFormat('pt-br', { minimumFractionDigits: 2 }).format(originalPrice);
