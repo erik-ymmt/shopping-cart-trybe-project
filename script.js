@@ -159,7 +159,7 @@ const finishShopSimulation = () => {
 
 const checkScreen = () => {
   if (window.innerWidth < 650) {
-    alert('Esse site não é compatível na versão mobile, por favor utilize no desktop, obrigado. - Erik');
+    alert('Esse site não foi desenvolvido para a versão mobile, por favor utilize no desktop para uma melhor experiência, obrigado. - Erik');
   }
 };
 
