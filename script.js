@@ -32,7 +32,6 @@ const createProductImageContainer = () => {
   return imgContainer;
 };
 
-
 const formatPrices = (originalPrice) =>
   Intl.NumberFormat('pt-br', { minimumFractionDigits: 2 }).format(originalPrice);
 
@@ -158,7 +157,15 @@ const finishShopSimulation = () => {
   });
 };
 
+const checkScreen = () => {
+  console.log(window.innerWidth);
+  if (window.innerWidth < 650) {
+    alert('Esse site não é compatível na versão mobile, por favor utilize no desktop, obrigado. - Erik');
+  }
+};
+
 window.onload = () => { 
+  checkScreen();
   loadingApiText();
   addProductOnCart();
   loadCartLocalStorage();

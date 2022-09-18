@@ -33,7 +33,7 @@
   "bugs": {
     "url": "https://github.com/betrybe/sd-0x-project-shopping-cart/issues"
   },
-  "homepage": "https://github.com/betrybe/sd-0x-project-shopping-cart#readme",
+  "homepage": ".",
   "dependencies": {
     "cypress": "4.3.0",
     "cypress-multi-reporters": "1.2.4",
